@@ -136,7 +136,8 @@ export const sendVerifyOtp = async (req, res) => {
 
 // Verify the Email using the OTP
 export const verifyEmail = async (req, res) => {
-  const { userId, otp } = req.body;
+  const userId = req.userId || req.body.userId;
+  const { otp } = req.body;
 
   if (!userId || !otp) {
     return res.json({ success: false, message: "Missing Details" });
@@ -206,7 +207,7 @@ export const sendResetOtp = async (req, res) => {
 
     return res.json({ success: true, message: "OTP sent to your email" });
   } catch (error) {
-    return res.json({ success: false, message: message.error });
+    return res.json({ success: false, message: error.message });
   }
 };
 //Reset User Password
