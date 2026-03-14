@@ -1,7 +1,21 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import EmailVerify from "./pages/EmailVerify";
+import ResetPassword from "./pages/ResetPassword";
+import Login from "./pages/login";
+import Home from "./pages/home";
 
 const App = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/email-verify" element={<EmailVerify />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+      </Routes>
+    </div>
+  );
 };
 
 export default App;
